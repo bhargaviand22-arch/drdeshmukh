@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Deshmukh Skin Hair Laser Clinic | Khamgaon</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS CSS for Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* === CSS Variables === */
+        :root {
+            --primary-blue: #003366;
+            --accent-pink: #E91E63;
+            --accent-purple: #6a1b9a;
+            --light-bg: #f4f9fd;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* === Global Reset & Scroll Fix === */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Mukta', 'Poppins', sans-serif; }
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+        /* === Premium Navbar (Glassmorphism) === */
+        header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: 0.4s;
+        }
+        .nav-container {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 5%; max-width: 1400px; margin: auto;
+        }
+        .logo img { max-height: 65px; border-radius: 8px; }
+        
+        .nav-links { display: flex; gap: 35px; list-style: none; align-items: center; }
+        .nav-links a {
+            text-decoration: none; color: var(--primary-blue); font-weight: 700; font-size: 16px;
+            position: relative; transition: 0.3s;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0%; height: 3px; bottom: -6px; left: 0;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple)); transition: 0.3s;
+            border-radius: 2px;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--accent-pink); }
+
+        /* Premium Button */
+        .btn {
+            background: linear-gradient(135deg, var(--accent-pink), #ff6f00);
+            color: var(--white) !important; padding: 12px 30px; border-radius: 50px;
+            text-decoration: none; font-weight: 700; transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(233, 30, 99, 0.3); border: none; cursor: pointer;
+        }
+        .btn:hover { transform: translateY(-4px); box-shadow: 0 15px 25px rgba(233, 30, 99, 0.4); }
+
+        .menu-toggle { display: none; font-size: 26px; color: var(--primary-blue); cursor: pointer; }
+
+        /* === Hero Section (Premium Look) === */
+        .hero {
+            height: 100vh; min-height: 700px;
+            background: linear-gradient(135deg, rgba(0, 51, 102, 0.85), rgba(233, 30, 99, 0.6)), url('images/hero-bg.jpg') center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            padding: 0 20px; margin-top: 80px; position: relative;
+        }
+        .hero-content { max-width: 1000px; color: var(--white); z-index: 2; }
+        .hero h1 { font-size: 60px; font-weight: 800; margin-bottom: 25px; text-shadow: 0 10px 30px rgba(0,0,0,0.4); line-height: 1.2; }
+        .hero p { font-size: 22px; margin-bottom: 40px; opacity: 0.9; font-weight: 300; }
+
+        /* === Section Titles === */
+        section { padding: 100px 5%; max-width: 1400px; margin: auto; }
+        .section-title { text-align: center; color: var(--primary-blue); font-size: 42px; font-weight: 800; margin-bottom: 60px; position: relative; }
+        .section-title::after {
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
+            position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); border-radius: 5px;
+        }
+
+        /* === Doctors Section (Modern Card) === */
+        .doctors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; margin-top: 50px; }
+        .doctor-card {
+            background: var(--white); border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            text-align: center; padding: 50px 30px 40px; transition: 0.4s; position: relative; margin-top: 70px;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+        .doctor-card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0, 51, 102, 0.15); }
+        .doctor-img {
+            width: 170px; height: 170px; border-radius: 50%; object-fit: cover;
+            border: 6px solid var(--white); box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            margin: -120px auto 25px; display: block; transition: 0.4s;
+        }
+        .doctor-card:hover .doctor-img { transform: scale(1.06); }
+        .doctor-card h3 { color: var(--primary-blue); margin-bottom: 12px; font-size: 26px; font-weight: 800; }
+        .doctor-card p { font-size: 15px; color: #666; margin-bottom: 6px; }
+        .badge {
+            background: linear-gradient(135deg, #fff0f5, #fce4ec); color: var(--accent-pink);
+            padding: 8px 20px; border-radius: 30px; font-size: 14px; font-weight: 700;
+            display: inline-block; margin-top: 15px; box-shadow: 0 4px 10px rgba(233, 30, 99, 0.1);
+        }
+
+        /* === Advanced Services Section (Image Cards) === */
+        .services-bg { background: linear-gradient(180deg, #f4f9fd 0%, #e8f0fe 100%); padding: 100px 5%; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+        
+        .service-card {
+            background: var(--white); border-radius: 25px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: 0.4s;
+            position: relative; border: 1px solid rgba(0,0,0,0.03); display: flex; flex-direction: column;
+        }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0, 51, 102, 0.12); }
+        
+        /* Image Container & Hover Zoom */
+        .service-img-box { width: 100%; height: 220px; overflow: hidden; position: relative; }
+        .service-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .service-card:hover .service-img-box img { transform: scale(1.12); }
+        
+        /* Gradient Overlay on Image */
+        .service-img-box::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+        }
+        
+        .service-content { padding: 30px; flex-grow: 1; }
+        .service-card h3 {
+            color: var(--primary-blue); margin-bottom: 15px; font-size: 24px; font-weight: 800;
+            display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px;
+        }
+        .service-card h3 i { color: var(--accent-pink); font-size: 30px; }
+        .service-card ul { list-style: none; }
+        .service-card ul li {
+            margin-bottom: 12px; padding-left: 32px; position: relative; font-size: 16px; color: #444;
+            font-weight: 500; transition: 0.3s;
+        }
+        .service-card ul li:hover { color: var(--primary-blue); transform: translateX(5px); }
+        .service-card ul li::before {
+            content: '\f058'; font-family: 'FontAwesome'; color: var(--accent-pink);
+            position: absolute; left: 0; top: 4px; font-size: 18px;
+        }
+
+        /* === Contact Section === */
+        .contact-container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
+            background: var(--white); padding: 60px; border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        }
+        .contact-info h3 { color: var(--primary-blue); font-size: 32px; margin-bottom: 25px; font-weight: 800; }
+        .info-item { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 30px; }
+        .info-item i {
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0); color: var(--accent-pink);
+            width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+            border-radius: 15px; font-size: 22px;
+        }
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%; padding: 16px; margin-bottom: 20px; border: 2px solid #eee;
+            border-radius: 12px; font-family: 'Mukta', sans-serif; font-size: 16px;
+            background: #fafafa; transition: 0.3s;
+        }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+            outline: none; border-color: var(--accent-pink); background: var(--white);
+            box-shadow: 0 0 0 4px rgba(233, 30, 99, 0.1);
+        }
+
+        /* === Floating Buttons (Advanced Pulse) === */
+        .floating-btns { position: fixed; bottom: 40px; right: 40px; display: flex; flex-direction: column; gap: 20px; z-index: 1000; }
+        .float-btn {
+            width: 65px; height: 65px; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; color: white; font-size: 32px;
+            text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: 0.3s; animation: floatPulse 2s infinite;
+        }
+        .float-call { background: linear-gradient(135deg, var(--accent-pink), #c2185b); }
+        .float-btn:hover { transform: scale(1.15) translateY(-5px); animation: none; }
+
+        @keyframes floatPulse {
+            0% { box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.6); }
+            70% { box-shadow: 0 0 0 20px rgba(233, 30, 99, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(233, 30, 99, 0); }
+        }
+
+        /* === Footer === */
+        footer { background: var(--primary-blue); color: white; text-align: center; padding: 60px 20px 40px; }
+        footer .footer-logo img { max-height: 90px; margin-bottom: 25px; background: white; padding: 8px; border-radius: 12px; }
+        footer .social-links a { color: white; font-size: 28px; margin: 0 15px; transition: 0.3s; text-decoration: none; }
+        footer .social-links a:hover { color: var(--accent-pink); transform: translateY(-5px); display: inline-block; }
+
+        /* === Mobile Responsive === */
+        @media (max-width: 992px) {
+            .contact-container { grid-template-columns: 1fr; padding: 40px; }
+            .hero h1 { font-size: 42px; }
+            .section-title { font-size: 32px; }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute; top: 100%; left: -100%; width: 100%;
+                background: var(--glass-bg); backdrop-filter: blur(20px);
+                flex-direction: column; padding: 30px 0; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                transition: 0.4s; border-bottom: 1px solid var(--glass-border);
+            }
+            .nav-links.active { left: 0; }
+            .menu-toggle { display: block; }
+            .logo img { max-height: 50px; }
+            .doctors-grid { margin-top: 100px; gap: 80px; }
+            .service-img-box { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="images/logo.png" alt="Dr. Deshmukh Clinic Logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">मुख्य पृष्ठ</a></li>
+                <li><a href="#about">आमच्याविषयी</a></li>
+                <li><a href="#services">उपचार</a></li>
+                <li><a href="#contact" class="btn">अपॉइंटमेंट बुक करा</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="zoom-in" data-aos-duration="1200">
+            <h1>तुमच्या त्वचेचे, केसांचे आणि सौंदर्याचे हमखास निवारण!</h1>
+            <p>डॉ. देशमुख स्किन, हेअर, लेझर क्लिनिक आणि अ‍ॅडव्हान्स्ड एस्थेटिक सेंटर, खामगांव. तज्ज्ञ डॉक्टरांच्या मार्गदर्शनाखाली आधुनिक उपचार.</p>
+            <a href="#contact" class="btn" style="font-size: 18px; padding: 16px 45px;">आजच अपॉइंटमेंट घ्या</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title" data-aos="fade-up">आमच्याविषयी (तज्ज्ञ डॉक्टर्स)</h2>
+        <div class="doctors-grid">
+            <!-- Doctor 1 -->
+            <div class="doctor-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="images/doctor-sagar.jpg" alt="Dr. Sagar Deshmukh" class="doctor-img">
+                <h3>डॉ. सागर वसंतराव देशमुख</h3>
+                <p><strong>BAMS, MUHS-NASHIK, F.DERM (IM) - UK, FCAM - DELHI</strong></p>
+                <p>C.C.H, C.S.D. MUMBAI</p>
+                <span class="badge">त्वचा, केस, लेझर व सौंदर्य उपचार तज्ञ</span>
+                <p style="margin-top: 15px; font-size: 13px; color: #888;">Reg No - I - 77847- A</p>
+            </div>
+            <!-- Doctor 2 -->
+            <div class="doctor-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="images/doctor-pratiksha.jpg" alt="Dr. Pratiksha Deshmukh" class="doctor-img">
+                <h3>डॉ. प्रतिक्षा सागर देशमुख</h3>
+                <p><strong>BHMS, MUHS NASHIK, C.DERM (Dermatology) - UK</strong></p>
+                <p>C.A.M (Aesthetic Medicine) - UK, C.C.H, C.G.O MUMBAI</p>
+                <span class="badge">त्वचा, केस व अ‍ॅडव्हान्स्ड होमिओपॅथिक उपचार तज्ञ</span>
+                <p style="margin-top: 15px; font-size: 13px; color: #888;">Reg No. 84591</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section with Images -->
+    <div class="services-bg">
+        <section id="services">
+            <h2 class="section-title" data-aos="fade-up">आमचे उपचार</h2>
+            <div class="services-grid">
+                
+                <!-- Skin Treatment -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-img-box">
+                        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&q=80" alt="Skin Treatment">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fa-solid fa-face-smile-beam"></i> त्वचारोग उपचार</h3>
+                        <ul>
+                            <li>मुरुम (पिंपल्स) व मुरुमांचे खड्डे</li>
+                            <li>एक्झिमा, खाज व अ‍ॅलर्जी (पित्त)</li>
+                            <li>तीळ, चामखीळ व मस्से काढणे</li>
+                            <li>सोरायसिस व फंगल इन्फेक्शन</li>
+                            <li>कोड (पांढरे डाग) व काळे डाग</li>
+                            <li>वाळवी, मेलामा, टॅन काढणे (MDA)</li>
+                            <li>गर्भवती व लहान मुलांचे त्वचेचे आजार</li>
+                            <li>नागीण, काजण्या, गजकर्ण, खरुज</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Hair Treatment -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-img-box">
+                        <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80" alt="Hair Treatment">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fa-solid fa-scissors"></i> केसांचे उपचार</h3>
+                        <ul>
+                            <li>Hair & Scalp Analysis (मशीनद्वारे तपासणी)</li>
+                            <li>Hair Fall Treatment (केस गळती)</li>
+                            <li>PRP, GFC, Exo-GFC Therapy</li>
+                            <li>Hair Mesotherapy (Cocktails)</li>
+                            <li>Advanced Hair Regrowth Therapy</li>
+                            <li>Thinning Hair & Greying (केस पातळ होणे)</li>
+                            <li>Anti-Dandruff Peel (कोंडा काढणे)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Laser Treatment -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-img-box">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="Laser Treatment">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fa-solid fa-bolt"></i> लेझर उपचार</h3>
+                        <ul>
+                            <li>मुरुमांच्या डागांवरील लेझर</li>
+                            <li>मस्से काढणे (RF Ablation) व टॅटू काढणे</li>
+                            <li>जन्मखूण काढणे व Diode LHR (केस काढणे)</li>
+                            <li>ओठांचा काळेपणा व डोळ्यांखालील काळी त्वचा</li>
+                            <li>सूर्यामुळे आलेले काळे डाग काढणे</li>
+                            <li>Omega Light Therapy व Laser Toning</li>
+                            <li>RF Skin Tightening व High Frequency Laser</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Face Sessions -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-img-box">
+                        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=80" alt="Face Sessions">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fa-solid fa-spa"></i> फेस सेशन्स</h3>
+                        <ul>
+                            <li>Hollywood Face (Glass Skin)</li>
+                            <li>Vampire Face (PRP) व Flash-Face</li>
+                            <li>24K Original Gold Face Session</li>
+                            <li>Anti-Acne व Oxygen Face Session</li>
+                            <li>Face Mesotherapy (Glutathione)</li>
+                            <li>Celebrity Glow व Photo-Face</li>
+                            <li>Microdermabrasion / Skin Polishing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Advanced Peels -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-img-box">
+                        <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=800&q=80" alt="Advanced Peels">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fa-solid fa-droplet"></i> अ‍ॅडव्हान्स्ड पील्स</h3>
+                        <ul>
+                            <li>Acne & Pimples Peel</li>
+                            <li>Melasma & Pigmentation Peel</li>
+                            <li>Dark Spot व Dull Skin Peel</li>
+                            <li>Open Pores Peel</li>
+                            <li>Underarm & Neck Pigmentation Peel</li>
+                            <li>Party Peel व Yellow Peel</li>
+                            <li>Fine Lines & Early Ageing Peel</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- IV Drips -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-img-box">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" alt="IV Drips">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fa-solid fa-syringe"></i> IV ड्रिप्स व पॅकेजेस</h3>
+                        <ul>
+                            <li>Hydration & Wellness IV Drip</li>
+                            <li>Vitamins, B12 व Glow-Drip</li>
+                            <li>Hair Nutrition Drip</li>
+                            <li>Bridal / Groom Packages</li>
+                            <li>Pre-Wedding Skin Transformation</li>
+                            <li>Ultimate Glass Skin Programs</li>
+                            <li>Age-Reverse Premium Skin Programs</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title" data-aos="fade-up">संपर्क व अपॉइंटमेंट</h2>
+        <div class="contact-container" data-aos="fade-up">
+            
+            <div class="contact-info">
+                <h3>आमच्याशी संपर्क साधा</h3>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>पत्ता:</strong><br>
+                        घाटपुरी नाका, चौधरी मेडिकलच्या बाजूला,<br> खामगांव ४४४३०३, जि. बुलढाणा.
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>फोन:</strong><br>
+                        <a href="tel:9272550699" style="color: var(--text-dark); text-decoration: none;">9272550699</a> / 
+                        <a href="tel:9850162210" style="color: var(--text-dark); text-decoration: none;">9850162210</a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>ईमेल:</strong><br>
+                        drdeshmhkhskinhairlaserclinic@gmail.com
+                    </div>
+                </div>
+                
+                <!-- Google Map -->
+                <div class="map-container" style="margin-top: 20px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15010.136855785274!2d76.5633675!3d20.7020614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd78b2a19b9b3cb%3A0xc3d4f8d9b8c7a6b5!2sKhamgaon%2C%20Maharashtra%20444303!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="220" style="border:0; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <!-- Appointment Form -->
+            <div class="contact-form">
+                <h3 style="color: var(--primary-blue); margin-bottom: 25px; font-size: 26px;">अपॉइंटमेंट बुक करा</h3>
+                <form id="appointmentForm">
+                    <input type="text" id="patientName" placeholder="तुमचे पूर्ण नाव *" required>
+
+                    <input type="number" id="patientAge" placeholder="वय *" min="1" max="120" required>
+
+                    <input type="text" id="patientVillage" placeholder="गाव / शहर *" required>
+
+                    <input type="tel" id="patientMobile" placeholder="मोबाईल नंबर (10 अंकी) *"
+                           pattern="[6-9][0-9]{9}" maxlength="10" required>
+
+                    <select id="patientProblem" required>
+                        <option value="">समस्या निवडा *</option>
+                        <option value="त्वचा (Skin)">त्वचा (Skin)</option>
+                        <option value="केस (Hair)">केस (Hair)</option>
+                        <option value="लेझर (Laser)">लेझर (Laser)</option>
+                        <option value="सौंदर्य (Beauty/Face)">सौंदर्य (Beauty/Face)</option>
+                        <option value="इतर (Other)">इतर (Other)</option>
+                    </select>
+
+                    <textarea id="patientMessage" rows="3" placeholder="तुमचा मेसेज (ऐच्छिक)"></textarea>
+
+                    <button type="submit" class="btn" style="width: 100%; font-size: 18px;">
+                        अपॉइंटमेंट बुक करा
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Floating Button (Only Call) -->
+    <div class="floating-btns">
+        <a href="tel:9272550699" class="float-btn float-call" title="डायरेक्ट कॉल करा">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <img src="images/logo.png" alt="Dr. Deshmukh Clinic Logo">
+        </div>
+        <div class="social-links" style="margin-bottom: 25px;">
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <p>&copy; 2024 डॉ. देशमुख स्किन, हेअर, लेझर क्लिनिक. सर्व हक्क राखीव.</p>
+        <p style="margin-top: 10px; font-size: 14px; opacity: 0.6;">Stay Connected With Us</p>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        AOS.init({ once: true, offset: 100, duration: 800 });
+
+        // === Mobile Menu Toggle ===
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => { navLinks.classList.remove('active'); });
+        });
+
+        // ==========================================
+        // === Appointment Form → WhatsApp (Bundle + Redirect) ===
+        // ==========================================
+        document.getElementById('appointmentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name    = document.getElementById('patientName').value.trim();
+            const age     = document.getElementById('patientAge').value.trim();
+            const village = document.getElementById('patientVillage').value.trim();
+            const mobile  = document.getElementById('patientMobile').value.trim();
+            const problem = document.getElementById('patientProblem').value;
+            const message = document.getElementById('patientMessage').value.trim();
+
+            // ---- Validation ----
+            if (!name || !age || !village || !mobile || !problem) {
+                alert('कृपया सर्व * मार्क केलेली माहिती भरा.');
+                return;
+            }
+            if (!/^[6-9]\d{9}$/.test(mobile)) {
+                alert('कृपया योग्य 10 अंकी मोबाईल नंबर टाका (उदा. 9272550699).');
+                return;
+            }
+
+            // ---- WhatsApp Message Bundle ----
+            const text = `नमस्कार डॉ. देशमुख क्लिनिक टीम, 🙏
+
+मला अपॉइंटमेंट बुक करायची आहे.
+
+━━━━━━━━━━━━━━━━━
+👤 नाव         : ${name}
+🎂 वय          : ${age}
+📍 गाव         : ${village}
+📱 मोबाईल     : ${mobile}
+🩺 समस्या     : ${problem}
+📝 मेसेज      : ${message || '—'}
+━━━━━━━━━━━━━━━━━
+
+कृपया माझी अपॉइंटमेंट कन्फर्म करा. धन्यवाद!`;
+
+            // ---- Redirect to WhatsApp ----
+            const url = "https://wa.me/919272550699?text=" + encodeURIComponent(text);
+            window.open(url, "_blank");
+
+            this.reset();
+        });
+    </script>
+</body>
+</html>
