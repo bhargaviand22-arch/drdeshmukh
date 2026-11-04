@@ -289,6 +289,7 @@ header {
 }
 
 .lang-switch {
+     display: none !important;
     display: inline-flex;
     align-items: center;
     background: var(--soft-pastel-pink);
