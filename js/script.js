@@ -71,7 +71,7 @@ const doctorsData = [
             en: "Dr. Sagar Vasantrao Deshmukh",
             mr: "डॉ. सागर वसंतराव देशमुख"
         },
-        qualifications: "BAMS (MUHS-NASHIK) | F.DERM (IM) - UK | FCAM - DELHI | C.C.H, C.S.D. MUMBAI",
+        qualifications: "BAMS, MUHS-NASHIK,F.DERM(IM)- <br> UK (Fellowship in Dermatology & Integrated Medicine) <br> FCAM - DELHI (Fellowship in Cosmetology & Asthetic Medicine)<br>C.C.H, C.S.D, MUMBAI",
         badge: {
             en: "Registered Medical Practitioner",
             mr: "नोंदणीकृत वैद्यकीय व्यावसायिक"
@@ -106,7 +106,7 @@ const doctorsData = [
             en: "Dr. Pratiksha Sagar Deshmukh",
             mr: "डॉ. प्रतिक्षा सागर देशमुख"
         },
-        qualifications: "BHMS (MUHS NASHIK) | C.DERM (Dermatology) - UK | C.A.M (Aesthetic Medicine) - UK | C.C.H, C.G.O MUMBAI",
+        qualifications: "BHMS,MUHS-NASHIK,C DERM (Dermatology) -UK <br> C.A.M (Asthetic Medicine)- UK <br> C.C.H, C.G.O MUMBAI",
         badge: {
             en: "Registered Medical Practitioner",
             mr: "नोंदणीकृत वैद्यकीय व्यावसायिक"
@@ -1121,7 +1121,7 @@ const translations = {
         selectProblemBeauty: "Face Glow / Aesthetic (सौंदर्य)",
         selectProblemOther: "Other Medical Issue (इतर)",
         fieldMessagePlaceholder: "Brief Symptoms or Medical History (Optional)",
-        formSubmitBtn: "Send Appointment Request via WhatsApp",
+        formSubmitBtn: "Send Appointment Requests",
         privacyNote: "Confidentiality Notice: Patient information is collected strictly for appointment scheduling and is never shared with third parties.",
 
         // Floating & Footer
@@ -1748,7 +1748,6 @@ function renderDoctors(lang) {
             </div>
             <p class="doc-simple-row"><strong>${lang === 'mr' ? 'नोंदणी' : 'Registration'}</strong>${doc.regNo[lang]}</p>
             <p class="doc-simple-row"><strong>${dict.doctorTimingLabel}</strong>${doc.timing[lang]}</p>
-            ${extra ? `<p class="doc-simple-row doc-simple-extra"><strong>${lang === 'mr' ? 'अतिरिक्त प्रमाणपत्र अभ्यासक्रम' : 'Additional certificate courses'}</strong>${extra}</p>` : ''}
             <a href="#contact" class="doc-simple-link select-doctor-btn" data-doc-name="${doc.name[lang]}">${dict.doctorBookBtn} &rarr;</a>
         </div>`;
     }).join('');
